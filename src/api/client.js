@@ -14,7 +14,9 @@ const CHAT = {
     this.socket.emit('login', {userid: this.userid, username: this.username})
     // 监听服务器login事件
     this.socket.on('login', function (obj) {
-      console.log('接收服务器广播...' + obj.user.username)
+      console.log(obj.user.username + '加入了聊天室')
+      CHAT.msgArr.push(obj)
+      CHAT.updateSys()
     })
     // 监听服务器message事件
     this.socket.on('sendMessage', function (obj) {

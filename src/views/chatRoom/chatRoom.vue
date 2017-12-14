@@ -3,7 +3,7 @@
     <!-- <avatarAndWord :isSelf="true" :message="'mine'"></avatarAndWord>
     <avatarAndWord :isSelf="false" :message="'other'"></avatarAndWord>
     <notice-bubble :message="'123 加入聊天'"></notice-bubble> -->
-
+    <template v-for="obj in CHAT.msgArr"></template>
   </div>
 </template>
 <script>
@@ -11,7 +11,7 @@
   import avatar from '../components/avatar'
   import avatarAndWord from '../components/avatarAndWord'
   import noticeBubble from '../components/noticeBubble'
-  // import CHAT from '@/api/client'
+  import CHAT from '@/api/client'
   import { mapState, mapMutations } from 'vuex'
   import * as type from '@/store/types'
   export default {
@@ -24,6 +24,7 @@
     },
     data () {
       return {
+        CHAT,
         isSelf: true, // 是否是自己发的消息
         msg: '', // 消息内容
         notice: '', // 系统/服务器提示内容
@@ -42,12 +43,13 @@
     },
     created () {
       this.isShowSendMessage(true)
-    },
-    watch: {
-      msgArr (newArr, oldArr) {
-        console.log('数组发生变化')
-      }
     }
+    // ,
+    // watch: {
+    //   msgArr (newArr, oldArr) {
+    //     console.log('数组发生变化')
+    //   }
+    // }
   }
 </script>
 <style lang="less">
