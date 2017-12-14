@@ -1,17 +1,17 @@
 <template>
   <div class="chatRoom">
-    <avatar :isSelf="false"></avatar>
-    <wordBubble :message="'我的一生'" 
-    :isSelf="false"
-    :fontSize="15"></wordBubble>
-    <div></div>
-    <noticeBubble :message="'123进入房间'"></noticeBubble>
+    <!-- <avatarAndWord :isSelf="true" :message="'mine'"></avatarAndWord>
+    <avatarAndWord :isSelf="false" :message="'other'"></avatarAndWord>
+    <notice-bubble :message="'123 加入聊天'"></notice-bubble> -->
+
   </div>
 </template>
 <script>
   import wordBubble from '../components/wordBubble'
   import avatar from '../components/avatar'
+  import avatarAndWord from '../components/avatarAndWord'
   import noticeBubble from '../components/noticeBubble'
+  // import CHAT from '@/api/client'
   import { mapState, mapMutations } from 'vuex'
   import * as type from '@/store/types'
   export default {
@@ -19,7 +19,16 @@
     components: {
       wordBubble,
       avatar,
-      noticeBubble
+      noticeBubble,
+      avatarAndWord
+    },
+    data () {
+      return {
+        isSelf: true, // 是否是自己发的消息
+        msg: '', // 消息内容
+        notice: '', // 系统/服务器提示内容
+        msgArr: [] // 存放聊天记录和登陆信息
+      }
     },
     methods: {
       ...mapMutations({
@@ -33,11 +42,29 @@
     },
     created () {
       this.isShowSendMessage(true)
+    },
+    watch: {
+      msgArr (newArr, oldArr) {
+        console.log('数组发生变化')
+      }
     }
   }
 </script>
 <style lang="less">
   .chatRoom {
     position: relative;
+    .avatarAndWord {
+      .slefMsg {
+        .avatar-wrapper {
+          margin-right: 5px;
+        }
+      }
+      .otherMsg {
+        float: right;
+        .avatar-wrapper {
+          margin-left: 5px;
+        }
+      }
+    }
   }
 </style>

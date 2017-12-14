@@ -2,8 +2,10 @@
  * notice提示
  */
 <template>
-  <div class="noticeBubble">
-    {{message}}
+  <div class="noticeBubble-wrapper">
+    <div class="noticeBubble">
+      {{message}}
+    </div>
   </div>
 </template>
 <script>
@@ -17,15 +19,17 @@
   }
 </script>
 <style lang="less">
+.noticeBubble-wrapper {
   .noticeBubble {
-    display: inline-block;
-    // max-width: 200px;
+    width: 150px;
     min-height: 15px;
     border-radius: 7.5px;
     line-height: 15px;
     color: grey;
     padding: 2px 10px;
     background: lightsalmon;
-    // margin: 0 auto;
+    margin: 0 auto;
+    text-align: center;
   }
+}
 </style>

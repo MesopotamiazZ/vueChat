@@ -59,6 +59,13 @@
       user () {
         return {userid: this.userid, username: this.username}
       }
+    },
+    created () {
+      if (!sessionStorage.getItem('userid') && !sessionStorage.getItem('username')) {
+        this.$router.push('/login')
+      } else {
+        this.$router.push('/chat')
+      }
     }
   }
 </script>

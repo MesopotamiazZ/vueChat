@@ -1,7 +1,6 @@
 /**
  * message提示
  */
-
 <template>
   <div class="wordBubble-wrapper">
     <div class="wordBubble" :class="{mySelf: isSelf, other: !isSelf}" :style="{fontSize: fontSize + 'px'}">
@@ -32,8 +31,9 @@
     .wordBubble {
       display: inline-block;
       max-width: 200px;
-      min-height: 30px;
-      line-height: 30px;
+      // box-sizing: border-box;
+      min-height: 28px;
+      line-height: 28px;
       word-wrap: break-word;
       padding: 2px 10px;
     }
